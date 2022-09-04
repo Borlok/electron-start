@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  background-color: gray;
+  height: 10vh;
+}
+.body-app {
+  height: 75vh;
+}
+.foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}

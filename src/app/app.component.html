@@ -1,8 +1,10 @@
 <div class="header">
-
+  <img style="cursor: pointer" src="../assets/images/img.png" height="30" width="175" alt="TalpaBox"/>
 </div>
-<div class="body-app"></div>
+<div class="body-app">
+  <input type="text" [value]="path">
+</div>
 <div class="foot">
-  <button>Hello</button>
-  <button>World</button>
+  <button mat-raised-button (click)="getPath()">GetPath</button>
+  <button mat-raised-button>World</button>
 </div>
