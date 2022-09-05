@@ -20,4 +20,8 @@ export class AppComponent {
   addFile() {
     this.api.addFileWithName([this.fileName, this.content])
   }
+
+  removeFile() {
+    this.api.removeFileWithName([this.fileName, this.content])
+  }
 }
