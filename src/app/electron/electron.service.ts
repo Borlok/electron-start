@@ -5,6 +5,7 @@ import { ipcRenderer } from 'electron';
 @Injectable({
   providedIn: 'root'
 })
+// TODO Deprecated
 export class ElectronService {
   ipcRenderer: typeof ipcRenderer | undefined;
 

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {ElectronService} from "./electron/electron.service";
 
 @Component({
   selector: 'app-root',
@@ -9,11 +8,10 @@ import {ElectronService} from "./electron/electron.service";
 export class AppComponent {
   path = '';
   title = 'talpabox-app';
+  // @ts-ignore
+  api = window.electronAPI;
 
-  constructor(private electronService: ElectronService) {
-  }
-
-  getPath() {
-    this.electronService.ipcRenderer?.invoke('getPath').then(x => this.path = x);
+  getPath(): void {
+    this.api.getFolderPath().then((x: string) => this.path = x)
   }
 }

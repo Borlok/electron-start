@@ -18,7 +18,8 @@
     ]
   },
   "files": [
-    "dist/main.ts"
+    "dist/main.ts",
+    "dist/preload.ts"
   ],
   "exclude": [
     "node_modules",
