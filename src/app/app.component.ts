@@ -7,11 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   path = '';
+  fileName = '';
+  content = '';
   title = 'talpabox-app';
   // @ts-ignore
   api = window.electronAPI;
 
   getPath(): void {
     this.api.getFolderPath().then((x: string) => this.path = x)
+  }
+
+  addFile() {
+    this.api.addFileWithName([this.fileName, this.content])
   }
 }

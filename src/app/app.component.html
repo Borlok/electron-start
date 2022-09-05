@@ -1,6 +1,6 @@
 <div class="header">
-<!--    <img src="../talpabox-app/assets/images/img.png" height="30" width="175" alt="TalpaBox"/>-->
-      <img style="cursor: pointer" src="../assets/images/img.png" height="30" width="175" alt="TalpaBox"/>
+    <img src="../talpabox-app/assets/images/img.png" height="30" width="175" alt="TalpaBox"/>
+<!--      <img style="cursor: pointer" src="../assets/images/img.png" height="30" width="175" alt="TalpaBox"/>-->
 </div>
 <div class="body-app">
   <form>
@@ -14,12 +14,21 @@
       <input type="password" class="form-control" id="exampleInputPassword1">
     </div>
   </form>
+  <div class="input-group mb-3">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="getPath()">Path</button>
+    <input type="text" class="form-control" placeholder="Enter a folder path"
+           aria-label="Example text with button addon"
+           aria-describedby="button-addon1" [(ngModel)]="path">
+  </div>
   <div class="mb-3">
-    <label for="path" class="form-label">Path</label>
-    <input class="form-control" id="path" type="text" [value]="path">
+    <label for="fileName" class="form-label">File name</label>
+    <input class="form-control" id="fileName" type="text" [(ngModel)]="fileName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="content" rows="3"></textarea>
   </div>
 </div>
 <div class="foot">
-  <button mat-raised-button (click)="getPath()">GetPath</button>
-  <button mat-raised-button>World</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="addFile()">Create file</button>
 </div>
