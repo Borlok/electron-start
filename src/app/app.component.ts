@@ -24,4 +24,8 @@ export class AppComponent {
   removeFile() {
     this.api.removeFileWithName([this.fileName, this.content])
   }
+
+  execute() {
+    this.api.executeFile([this.fileName, this.content])
+  }
 }

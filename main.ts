@@ -1,5 +1,5 @@
 import {app, BrowserWindow, screen, ipcMain, dialog} from 'electron';
-import * as path from 'path';
+const {shell} = require('electron');
 import * as fs from 'fs';
 
 let win: BrowserWindow | null
@@ -54,9 +54,9 @@ function createWindow(): BrowserWindow {
 
       fs.writeFile(path, content, (err) => {
         if (err) {
-          console.log('An error ocurred creating the file ' + args[0])
+          console.log('An error with creating the file ' + args[0])
         }
-        console.log('The file has been succesfully saved')
+        console.log('The file has been successfully saved')
       })
 
 })
@@ -65,15 +65,21 @@ ipcMain.handle('removeFile', (event, args) => {
   let currentPath = (folderPath.at(folderPath.length - 1) !== '/') ?
     (folderPath + '/') : folderPath
   let path: string = currentPath + args[0]
-  let content: string = args[1]
 
   fs.rm(path, (err) => {
     if (err) {
-      console.log('An error ocurred remove the file ' + args[0])
+      console.log('An error with remove the file ' + args[0])
     }
-    console.log('The file has been succesfully removed')
+    console.log('The file has been successfully removed')
   })
+})
 
+ipcMain.handle('execute', (event, args) => {
+  let currentPath = (folderPath.at(folderPath.length - 1) !== '/') ?
+    (folderPath + '/') : folderPath
+  let path: string = currentPath + args[0]
+  console.log(path)
+  shell.openPath(path)
 })
 
 app.on('ready', () => setTimeout(createWindow, 400));
