@@ -10,6 +10,7 @@
     "types": [
       "node"
     ],
+    "outDir": "dist",
     "lib": [
       "es2017",
       "es2016",
@@ -18,8 +19,8 @@
     ]
   },
   "files": [
-    "dist/main.ts",
-    "dist/preload.ts"
+    "main.ts",
+    "preload.ts"
   ],
   "exclude": [
     "node_modules",

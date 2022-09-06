@@ -1,8 +1,8 @@
 <div class="header">
-    <img src="../talpabox-app/assets/images/img.png" height="30" width="175" alt="TalpaBox"/>
-<!--      <img style="cursor: pointer" src="../assets/images/img.png" height="30" width="175" alt="TalpaBox"/>-->
+  <img src="../talpabox-app/assets/images/img.png" height="30" width="175" alt="TalpaBox"/>
+  <!--      <img style="cursor: pointer" src="../assets/images/img.png" height="30" width="175" alt="TalpaBox"/>-->
 </div>
-<div class="body-app">
+<div class="body">
   <form>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -28,8 +28,8 @@
     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="content" rows="3"></textarea>
   </div>
-</div>
-<div class="foot">
-  <button type="button" class="btn btn-outline-secondary" (click)="addFile()">Create file</button>
-  <button type="button" class="btn btn-outline-secondary" (click)="removeFile()">Delete file</button>
+  <div class="foot">
+    <button type="button" class="btn btn-outline-secondary" (click)="addFile()">Create file</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="removeFile()">Delete file</button>
+  </div>
 </div>
