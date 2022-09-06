@@ -1,0 +1,23 @@
+<div class="body">
+  <div class="input-group mb-3">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="getPath()">Path</button>
+    <input type="text" class="form-control" placeholder="Enter a folder path"
+           aria-label="Example text with button addon"
+           aria-describedby="button-addon1" [(ngModel)]="path">
+  </div>
+  <div class="mb-3">
+    <label for="fileName" class="form-label">File name</label>
+    <input class="form-control" id="fileName" type="text" [(ngModel)]="fileName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="content" rows="3"></textarea>
+  </div>
+  <div class="foot">
+    <button type="button" class="btn btn-outline-secondary" (click)="addFile()">Create file</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="removeFile()">Delete file</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="execute()">Execute file</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="onLogin()">Login</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="main()">Main</button>
+  </div>
+</div>

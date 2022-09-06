@@ -1,0 +1,24 @@
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 75vh;
+}
+
+.body div {
+  width: 50vw;
+}
+.foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.foot button {
+  width: 20vw;
+}

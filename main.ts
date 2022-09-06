@@ -82,6 +82,10 @@ ipcMain.handle('execute', (event, args) => {
   shell.openPath(path)
 })
 
+ipcMain.handle('openWindow', () => {
+  createWindow()
+})
+
 app.on('ready', () => setTimeout(createWindow, 400));
 
 app.on('window-all-closed', () => {
