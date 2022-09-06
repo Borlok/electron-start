@@ -9,7 +9,8 @@ import {MainComponent} from "./main/main/main.component";
 import { RouterModule } from '@angular/router';
 import {MainModule} from "./main/main.module";
 import {HeaderComponent} from "./main/header/header.component";
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from "./auth/auth-interceptor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

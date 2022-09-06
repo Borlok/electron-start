@@ -1,8 +1,8 @@
-<div class="body">
+<div class="body"  (keyup.escape)="onClose()" (keyup.enter)="onLogin()">
   <form [formGroup]="loginForm">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  formControlName="username" required>
+      <input type="email" class="form-control" id="exampleInputEmail1" autofocus aria-describedby="emailHelp"  formControlName="username" required>
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
@@ -11,7 +11,8 @@
     </div>
   </form>
   <div class="buttons">
-    <button mat-raised-button (click)="login()">Connect</button>
-    <button mat-raised-button (click)="back()">Back</button>
+    <button mat-raised-button (click)="onLogin()">Connect</button>
+    <button mat-raised-button (click)="onLogout()">Disconnect</button>
+    <button mat-raised-button (click)="onClose()">Close</button>
   </div>
 </div>

@@ -29,12 +29,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  back() {
+  onClose() {
     this.router.navigate([''])
   }
 
-  login() {
-    const x = this.authService.login(this.loginForm.get('username').value, this.loginForm.get('password').value);
-    console.log(x)
+  onLogin() {
+    this.authService.login(this.loginForm.get('username').value, this.loginForm.get('password').value);
+  }
+  onLogout() {
+    this.authService.logout();
   }
 }

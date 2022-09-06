@@ -51,8 +51,8 @@ export class AuthService {
       }, error => {
         console.log(`Oops,something went wrong. during login...  ${JSON.stringify(error.error)}`);
         this.authStatusListener.next(false);
+        return 'false'
       });
-    return 'success'
   }
 
   logout() {
@@ -131,5 +131,45 @@ export class AuthService {
   public setCompanyName(companyName: string) {
     localStorage.setItem('companyName', companyName);
     this.companyName = companyName;
+  }
+
+  getToken() {
+    return this.token;
+  }
+
+  getIsAuth() {
+    return this.isAuthenticated;
+  }
+
+  getUserId() {
+    return this.userId;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+  getCustomerId(): string {
+    return this.customerId;
+  }
+
+  getIsAdmin() {
+    return this.isAdmin;
+  }
+
+  getIsUser() {
+    return this.isUser;
+  }
+
+  getRoles() {
+    return this.roles;
+  }
+
+  getCompanyId() {
+    return this.companyId;
+
+  }
+  getCompanyName() {
+    return this.companyName;
   }
 }
