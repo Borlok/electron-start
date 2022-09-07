@@ -5,5 +5,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
   addFileWithName: (args: any) => ipcRenderer.invoke('addFile', args),
   removeFileWithName: (args: any) => ipcRenderer.invoke('removeFile', args),
   executeFile: (args: any) => ipcRenderer.invoke('execute', args),
-  openWindow: () => ipcRenderer.invoke('openWindow')
+  openWindow: () => ipcRenderer.invoke('openWindow'),
+  hide: () => ipcRenderer.invoke('hide')
 })

@@ -1,9 +1,10 @@
-import {app, BrowserWindow, screen, ipcMain, dialog} from 'electron';
+import {app, BrowserWindow, screen, ipcMain, dialog, Menu, Tray} from 'electron';
 const {shell} = require('electron');
 import * as fs from 'fs';
 
 let win: BrowserWindow | null
 let folderPath: string
+let tray;
 
 function createWindow(): BrowserWindow {
 
@@ -17,7 +18,7 @@ function createWindow(): BrowserWindow {
     minWidth: 600,
     minHeight: 600,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       preload: __dirname + '/preload.js',
       contextIsolation: true,
     },
@@ -40,18 +41,15 @@ function createWindow(): BrowserWindow {
       properties: ['openDirectory']
     })
     if (canceled) {
-      return
+      return ''
     } else {
       return folderPath = filePaths[0]
     }
   }
 
   ipcMain.handle('addFile', (event, args) => {
-    let currentPath = (folderPath.at(folderPath.length - 1) !== '/') ?
-      (folderPath + '/') : folderPath
-    let path: string = currentPath + args[0]
-    let content: string = args[1]
-
+    let path = args[0]
+    let content = args[1]
       fs.writeFile(path, content, (err) => {
         if (err) {
           console.log('An error with creating the file ' + args[0])
@@ -62,10 +60,7 @@ function createWindow(): BrowserWindow {
 })
 
 ipcMain.handle('removeFile', (event, args) => {
-  let currentPath = (folderPath.at(folderPath.length - 1) !== '/') ?
-    (folderPath + '/') : folderPath
-  let path: string = currentPath + args[0]
-
+  let path = args[0]
   fs.rm(path, (err) => {
     if (err) {
       console.log('An error with remove the file ' + args[0])
@@ -75,12 +70,24 @@ ipcMain.handle('removeFile', (event, args) => {
 })
 
 ipcMain.handle('execute', (event, args) => {
-  let currentPath = (folderPath.at(folderPath.length - 1) !== '/') ?
-    (folderPath + '/') : folderPath
-  let path: string = currentPath + args[0]
-  console.log(path)
+  let path: string = args[0]
   shell.openPath(path)
 })
+
+ipcMain.handle('hide', addTray)
+
+async function addTray() {
+  tray = new Tray(__dirname + '/talpabox-app/assets/images/img.png')
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Item1', type: 'radio' },
+    { label: 'Item2', type: 'radio' },
+    { label: 'Item3', type: 'radio', checked: true },
+    { label: 'Item4', type: 'radio' }
+  ])
+  contextMenu.items[1].checked = false
+  tray.setToolTip('Talpabox')
+  tray.setContextMenu(contextMenu)
+}
 
 ipcMain.handle('openWindow', () => {
   createWindow()

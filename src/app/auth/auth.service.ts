@@ -40,7 +40,7 @@ export class AuthService {
           this.roles = JSON.parse(atob(this.token.split('.')[1])).roles;
           if (this.roles.includes(Role.Admin)) {
             this.isAdmin = true;
-            localStorage.setItem('isAdmin', 'true'); // for company management
+            localStorage.setItem('isAdmin', 'true');
           }
           this.authStatusListener.next(true);
           this.saveAuthData(this.token, this.customerId, this.roles);

@@ -10,6 +10,10 @@
       <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" required>
     </div>
   </form>
+  <div  class="mb-3" style="margin: 1%">
+    <label for="mill" class="form-label">Request delay in seconds </label>
+    <input id="mill" type="number" class="form-control" min="1" (change)="changeSec()" [(ngModel)]="seconds">
+  </div>
   <div class="buttons">
     <button mat-raised-button (click)="onLogin()">Connect</button>
     <button mat-raised-button (click)="onLogout()">Disconnect</button>

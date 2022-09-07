@@ -1,4 +1,3 @@
-
 .content {
   display: flex;
   flex-direction: column;
@@ -9,9 +8,18 @@
   align-items: center;
   height: 75vh;
 }
-
+.info {
+  box-shadow: #323232 0 0 5px;
+  width: 100vw;
+  height: 100vh;
+}
+.info-text {
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
 .body div {
-  width: 50vw;
+  width: 98vw;
 }
 .foot {
   display: flex;
@@ -20,5 +28,6 @@
 }
 
 .foot button {
-  width: 20vw;
+  width: 30vw;
+  margin: 2%;
 }
