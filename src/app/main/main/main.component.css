@@ -12,6 +12,7 @@
   box-shadow: #323232 0 0 5px;
   width: 100vw;
   height: 100vh;
+  overflow: auto;
 }
 .info-text {
   -ms-user-select: none;

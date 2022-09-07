@@ -1,6 +1,8 @@
 <div class="body">
   <div class="info">
     <b class="info-text">Incoming data:</b>
+    <div *ngFor="let message of messages">{{ 'Function: ' + message.type + ' | URL: ' + message.url + ' | Content: ' +
+    (message.args === null ? '' : message.args[0]) }}</div>
   </div>
   <div class="foot">
     <button type="button" class="btn btn-outline-secondary" (click)="onLogin()">Login</button>

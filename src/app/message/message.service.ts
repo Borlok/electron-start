@@ -2,7 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {AuthService} from "../auth/auth.service";
-import {interval, Subscription} from "rxjs";
+import {interval, Subject, Subscription} from "rxjs";
 import {Type} from "../model/type";
 import {ElectronService} from "../electron/electron.service";
 import {AppMessage} from "../model/app-message";
@@ -15,6 +15,8 @@ const BACKEND_URL = environment.apiUrl + '/v1/messages';
 export class MessageService implements OnInit{
   private requestingStart: Subscription;
   private _seconds = 3;
+  messages: AppMessage [] = [];
+  isNewMessage: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient,
               private authService: AuthService,
@@ -38,7 +40,9 @@ export class MessageService implements OnInit{
         this.getMessages().subscribe(message => {
           console.log(message)
           if (message !== null) {
-            let data: AppMessage = JSON.parse(JSON.stringify(message))
+            let data: AppMessage = JSON.parse(JSON.stringify(message));
+            this.messages.push(data);
+            this.isNewMessage.next(true);
             this.appMessageHandle({type: data.type, url: data.url, args: data.args});
           }
         });
