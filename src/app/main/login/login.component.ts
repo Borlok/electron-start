@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   private buildForm(): void {
     this.loginForm = this.formBuilder.group(
       {
-        username: ['admin@mail.com'],
+        username: ['admin@mail.com'], // TODO Clear data
         password: ['admin']
       }
     );

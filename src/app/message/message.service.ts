@@ -12,7 +12,7 @@ const BACKEND_URL = environment.apiUrl + '/v1/messages';
 @Injectable({
   providedIn: 'root'
 })
-export class MessageService implements OnInit{
+export class MessageService implements OnInit {
   private requestingStart: Subscription;
   private _seconds = 3;
   messages: AppMessage [] = [];
@@ -37,13 +37,15 @@ export class MessageService implements OnInit{
     }
     this.requestingStart = interval(1000 * this._seconds)
       .subscribe(() => {
-        this.getMessages().subscribe(message => {
-          console.log(message)
-          if (message !== null) {
-            let data: AppMessage = JSON.parse(JSON.stringify(message));
-            this.messages.push(data);
-            this.isNewMessage.next(true);
-            this.appMessageHandle({type: data.type, url: data.url, args: data.args});
+        this.getMessages().subscribe(messages => {
+          console.log(messages)
+          if (messages !== null && messages instanceof Array) {
+            for (let message of messages) {
+              let data: AppMessage = JSON.parse(JSON.stringify(message));
+              this.messages.push(data);
+              this.isNewMessage.next(true);
+              this.appMessageHandle({type: data.type, url: data.url, args: data.args});
+            }
           }
         });
       });

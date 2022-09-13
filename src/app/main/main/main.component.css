@@ -15,9 +15,13 @@
   overflow: auto;
 }
 .info-text {
+  margin: 1%;
   -ms-user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
+}
+.message {
+  margin-left: 2vw;
 }
 .body div {
   width: 98vw;
